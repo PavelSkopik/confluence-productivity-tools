@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Created by skopa01 on 9/5/2016.
+ * Created by Pavel Skopik on 9/5/2016.
  */
 @Component
 public class DefaultPageMerger implements PageMerger {

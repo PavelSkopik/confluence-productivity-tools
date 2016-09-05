@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by skopa01 on 9/3/2016.
+ * Created by Pavel Skopik on 9/3/2016.
  */
 @Component
 public class DefaultPageOperationsManager implements PageOperationsManager {

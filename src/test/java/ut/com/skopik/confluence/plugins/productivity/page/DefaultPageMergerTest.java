@@ -8,14 +8,15 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by skopa01 on 9/5/2016.
+ * Created by Pavel Skopik on 9/5/2016.
  */
 public class DefaultPageMergerTest {
 
-    private static final String PAGE_BODY = "<p>This is paragraph</p>";
+    private static final String PAGE_BODY = "<p>paragraph</p>";
 
     private DefaultPageMerger pageMerger;
 
@@ -26,20 +27,21 @@ public class DefaultPageMergerTest {
 
     @Test
     public void mergePages() {
+        String expected = PAGE_BODY + "<h2>Page 1</h2>" + PAGE_BODY + "<h2>Page 2</h2>" + PAGE_BODY + "<h3>Page 3</h3>" + PAGE_BODY;
         List<Page> pages = getPageTree();
-        String result = pageMerger.mergePageBody(pages);
-
-        assertTrue(true);
+        assertEquals(expected, pageMerger.mergePageBody(pages));
     }
 
     private List<Page> getPageTree() {
         List<Page> pages = new ArrayList<>();
+        List<Page> ancestors = new ArrayList<>();
 
         Page parent = new Page();
         parent.setId(0);
         parent.setTitle("Page 0");
 
         pages.add(parent);
+        ancestors.add(parent);
 
         for (int i = 0; i < 3; i++) {
             Page p = new Page();
@@ -49,9 +51,12 @@ public class DefaultPageMergerTest {
 
             if (i == 2) {
                 p.setParentPage(pages.get(i));
+                ancestors.add(pages.get(i));
             } else {
                 p.setParentPage(parent);
             }
+
+            p.setAncestors(ancestors);
 
             pages.add(p);
         }

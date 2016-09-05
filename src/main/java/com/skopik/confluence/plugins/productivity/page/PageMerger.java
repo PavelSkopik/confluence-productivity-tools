@@ -5,7 +5,7 @@ import com.atlassian.confluence.pages.Page;
 import java.util.List;
 
 /**
- * Created by skopa01 on 9/5/2016.
+ * Created by Pavel Skopik on 9/5/2016.
  */
 public interface PageMerger {
 
