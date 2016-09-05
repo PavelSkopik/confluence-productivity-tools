@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="176.0" y="0.0">com.skopik.confluence.plugins.productivity.model.AsynchronousTask</node>
+    <node x="0.0" y="153.0">com.skopik.confluence.plugins.productivity.page.PageOperationsManager</node>
+    <node x="0.0" y="79.0">com.skopik.confluence.plugins.productivity.rest.PageOperationsResource</node>
+    <node x="184.0" y="79.0">com.skopik.confluence.plugins.productivity.model.PageMergeTask</node>
+    <node x="0.0" y="389.0">com.skopik.confluence.plugins.productivity.model.PageSplitTask</node>
+    <node x="320.0" y="79.0">DeletePagesTask</node>
+    <node x="0.0" y="271.0">com.skopik.confluence.plugins.productivity.task.AsynchronousTaskManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.skopik.confluence.plugins.productivity.model.PageMergeTask" target="com.skopik.confluence.plugins.productivity.model.AsynchronousTask">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.skopik.confluence.plugins.productivity.rest.PageOperationsResource" target="com.skopik.confluence.plugins.productivity.model.AsynchronousTask">
+      <point x="0.0" y="-14.5" />
+      <point x="82.0" y="54.0" />
+      <point x="198.0" y="54.0" />
+      <point x="-44.0" y="14.5" />
+    </edge>
+    <edge source="DeletePagesTask" target="com.skopik.confluence.plugins.productivity.model.AsynchronousTask">
+      <point x="0.0" y="-14.5" />
+      <point x="380.0" y="54.0" />
+      <point x="286.0" y="54.0" />
+      <point x="44.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="220.0" y="209.0" />
+  <SelectedNodes>
+    <node>DeletePagesTask</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
