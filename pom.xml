@@ -35,6 +35,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.atlassian.sal</groupId>
+            <artifactId>sal-api</artifactId>
+            <version>${sal.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>1</version>
@@ -66,6 +73,13 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atlassian.sal</groupId>
+            <artifactId>sal-core</artifactId>
+            <version>${sal.api.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -146,6 +160,7 @@
         <confluence.data.version>5.8.2</confluence.data.version>
         <amps.version>6.2.6</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
+        <sal.api.version>3.0.2</sal.api.version>
         <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
     </properties>
