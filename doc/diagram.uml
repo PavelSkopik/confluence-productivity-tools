@@ -3,56 +3,28 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="552.0" y="94.5">com.skopik.confluence.plugins.productivity.page.PageOperationsFactory</node>
-    <node x="11.5" y="425.5">com.skopik.confluence.plugins.productivity.page.PageOperationType</node>
-    <node x="-20.5" y="541.5">com.skopik.confluence.plugins.productivity.api.Settings</node>
-    <node x="9.5" y="-25.5">com.skopik.confluence.plugins.productivity.api.PageContentMerger</node>
-    <node x="294.0" y="425.5">com.skopik.confluence.plugins.productivity.model.AsynchronousTask</node>
-    <node x="-0.5" y="83.5">com.skopik.confluence.plugins.productivity.page.DefaultPageContentMerger</node>
-    <node x="278.0" y="545.5">com.skopik.confluence.plugins.productivity.rest.PageOperationsResource</node>
-    <node x="502.0" y="425.5">com.skopik.confluence.plugins.productivity.model.PageMergeTask</node>
-    <node x="325.0" y="72.5">com.skopik.confluence.plugins.productivity.page.MergePagesOperation</node>
-    <node x="227.5" y="705.5">com.skopik.confluence.plugins.productivity.model.PageSplitTask</node>
-    <node x="260.5" y="272.5">com.skopik.confluence.plugins.productivity.page.AbstractBulkOperation</node>
-    <node x="-9.5" y="683.5">com.skopik.confluence.plugins.productivity.task.AsynchronousTaskManager</node>
+    <node x="224.0" y="381.0">com.skopik.confluence.plugins.productivity.page.PageOperationsFactory</node>
+    <node x="0.0" y="499.0">com.skopik.confluence.plugins.productivity.page.PageOperationType</node>
+    <node x="286.0" y="0.0">com.skopik.confluence.plugins.productivity.api.Settings</node>
+    <node x="10.0" y="0.0">com.skopik.confluence.plugins.productivity.api.PageContentMerger</node>
+    <node x="225.0" y="219.0">com.skopik.confluence.plugins.productivity.model.AsynchronousTask</node>
+    <node x="0.0" y="101.0">com.skopik.confluence.plugins.productivity.page.DefaultPageContentMerger</node>
+    <node x="209.0" y="298.0">com.skopik.confluence.plugins.productivity.rest.PageOperationsResource</node>
+    <node x="0.0" y="219.0">com.skopik.confluence.plugins.productivity.page.MergePagesOperation</node>
+    <node x="0.0" y="381.0">com.skopik.confluence.plugins.productivity.task.AsynchronousTaskManager</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.skopik.confluence.plugins.productivity.api.Settings" target="com.skopik.confluence.plugins.productivity.page.PageOperationType">
-      <point x="0.0" y="-58.5" />
+    <edge source="com.skopik.confluence.plugins.productivity.rest.PageOperationsResource" target="com.skopik.confluence.plugins.productivity.model.AsynchronousTask">
+      <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="com.skopik.confluence.plugins.productivity.page.MergePagesOperation" target="com.skopik.confluence.plugins.productivity.page.DefaultPageContentMerger">
-      <point x="-75.0" y="0.0" />
-      <point x="120.5" y="0.0" />
     </edge>
     <edge source="com.skopik.confluence.plugins.productivity.page.DefaultPageContentMerger" target="com.skopik.confluence.plugins.productivity.api.PageContentMerger">
       <point x="0.0" y="-36.5" />
       <point x="0.0" y="25.5" />
     </edge>
-    <edge source="com.skopik.confluence.plugins.productivity.page.PageOperationsFactory" target="com.skopik.confluence.plugins.productivity.page.MergePagesOperation">
-      <point x="-88.0" y="0.0" />
-      <point x="75.0" y="0.0" />
-    </edge>
-    <edge source="com.skopik.confluence.plugins.productivity.model.PageMergeTask" target="com.skopik.confluence.plugins.productivity.model.AsynchronousTask">
-      <point x="-58.0" y="0.0" />
-      <point x="66.0" y="0.0" />
-    </edge>
-    <edge source="com.skopik.confluence.plugins.productivity.rest.PageOperationsResource" target="com.skopik.confluence.plugins.productivity.model.AsynchronousTask">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="com.skopik.confluence.plugins.productivity.page.MergePagesOperation" target="com.skopik.confluence.plugins.productivity.api.PageContentMerger">
-      <point x="0.0" y="-47.5" />
-      <point x="400.0" y="0.0" />
-      <point x="110.5" y="0.0" />
-    </edge>
-    <edge source="com.skopik.confluence.plugins.productivity.page.MergePagesOperation" target="com.skopik.confluence.plugins.productivity.page.AbstractBulkOperation">
-      <point x="0.0" y="47.5" />
-      <point x="0.0" y="-47.5" />
-    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="353.5" y="365.5" />
+  <settings layout="Hierarchic Group" zoom="0.8959854014598541" x="263.9409368635437" y="344.0" />
   <SelectedNodes />
   <Categories>
     <Category>Methods</Category>

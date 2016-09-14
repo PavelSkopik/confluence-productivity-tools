@@ -14,15 +14,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by skopa01 on 9/8/2016.
- */
-public class MergePagesOperation extends AbstractBulkOperation implements Operation<Boolean> {
+public class MergePagesOperation implements Operation<Boolean> {
 
     private static final Logger logger = LoggerFactory.getLogger(MergePagesOperation.class);
 
+    private AttachmentManager attachmentManager;
+    private PageManager pageManager;
     private TransactionTemplate transactionTemplate;
     private PageContentMerger contentMerger;
     private Settings settings;
@@ -71,8 +71,21 @@ public class MergePagesOperation extends AbstractBulkOperation implements Operat
 
         descendants.forEach(page -> {
             copyAttachments(page, parent);
-            pageManager.trashPage(page);
+            if (settings.isDeleteJoinedPages())
+                pageManager.trashPage(page);
         });
+    }
+
+    /**
+     * @param sourcePage
+     * @param targetPage
+     */
+    private void copyAttachments(Page sourcePage, Page targetPage) {
+        try {
+            attachmentManager.copyAttachments(sourcePage, targetPage);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
     }
 
 }

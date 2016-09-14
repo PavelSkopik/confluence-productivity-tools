@@ -6,7 +6,7 @@ public class Settings {
 
     private long pageId;
     private PageOperationType operationType;
-
+    private boolean deleteJoinedPages;
     public long getPageId() {
         return pageId;
     }
@@ -21,5 +21,13 @@ public class Settings {
 
     public void setOperationType(PageOperationType operationType) {
         this.operationType = operationType;
+    }
+
+    public boolean isDeleteJoinedPages() {
+        return deleteJoinedPages;
+    }
+
+    public void setDeleteJoinedPages(boolean deleteJoinedPages) {
+        this.deleteJoinedPages = deleteJoinedPages;
     }
 }
