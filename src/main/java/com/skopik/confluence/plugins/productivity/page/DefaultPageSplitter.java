@@ -56,9 +56,11 @@ public class DefaultPageSplitter implements PageSplitter {
     }
 
     /**
+     * Splits a page into multiple pages. Split pages are represented by a list of {@link PageData objects}.
      *
-     * @param document
-     * @return
+     * @param document Page content as JDOM2 document.
+     *
+     * @return List of {@link PageData objects}.
      */
     private List<PageData> split(Document document) {
         List<PageData> pages = new ArrayList<>();
@@ -66,18 +68,23 @@ public class DefaultPageSplitter implements PageSplitter {
         PageData currentPage = null;
 
         for (int i = 0; i < children.size(); i++) {
-            if (isHeading(children.get(i))) {
-                int level = getHeadingLevel(children.get(i));
+            Element e = children.get(i);
+
+            if (isHeading(e)) {
+                int level = getHeadingLevel(e);
 
                 currentPage = new PageData();
                 currentPage.setPosition(i);
                 currentPage.setLevel(level);
-                currentPage.setTitle(children.get(i).getValue());
+                currentPage.setTitle(e.getValue());
                 currentPage.setId(UUID.randomUUID().toString());
 
                 pages.add(currentPage);
             } else {
-                appendContentToBody(currentPage, children.get(i));
+                if (currentPage != null) {
+                    appendPageContent(currentPage, e);
+                    currentPage.addAttachmentNames(getAttachmentNames(e));
+                }
             }
         }
 
@@ -85,9 +92,11 @@ public class DefaultPageSplitter implements PageSplitter {
     }
 
     /**
-     * @param storageFormat
+     * Builds a JDOM2 document from Confluence storage format.
      *
-     * @return
+     * @param storageFormat Page content in storage format.
+     *
+     * @return JDOM2 document.
      */
     private Document getDocument(String storageFormat) {
         Document document = null;
@@ -107,32 +116,48 @@ public class DefaultPageSplitter implements PageSplitter {
         return document;
     }
 
-    private void appendContentToBody(PageData pageData, Element e) {
-        if (pageData != null)
-            pageData.setBody(pageData.getBody() + xmlOutputter.outputString(e));
+    /**
+     * Appends page content to given page.
+     *
+     * @param pageData {@link PageData PageData object to append content to.}
+     * @param e        Element to extract XML as string from.
+     */
+    private void appendPageContent(PageData pageData, Element e) {
+        pageData.setBody(pageData.getBody() + xmlOutputter.outputString(e));
     }
 
     /**
-     * @param e
+     * Retrieves a heading level..
      *
-     * @return
+     * @param e Element.
+     *
+     * @return Heading level.
      */
     private int getHeadingLevel(Element e) {
         Matcher m = getMatcher(e);
         return m.find() ? Integer.valueOf(m.group(1)) : -1;
     }
 
+    /**
+     * Returns attachments iterator.
+     *
+     * @param e Element.
+     *
+     * @return Iterator.
+     */
     private IteratorIterable<Element> getAttachmentsIterator(Element e) {
-        Filter<Element> attachmentsFilter = (Filter<Element>) Filters.element("attachment", Namespace.getNamespace(RESOURCE_INDENTIFIER_NS_PREFIX, RESOURCE_INDENTIFIER_NS_PREFIX)).or(Filters.element("structured-macro", Namespace.getNamespace(STORAGE_FORMAT_NS_PREFIX, STORAGE_FORMAT_NS_PREFIX)));
+        Filter<Element> attachmentsFilter = (Filter<Element>) Filters.element("attachment", Namespace.getNamespace(RESOURCE_INDENTIFIER_NS_PREFIX, RESOURCE_INDENTIFIER_NS_URI)).or(Filters.element("structured-macro", Namespace.getNamespace(STORAGE_FORMAT_NS_PREFIX, STORAGE_FORMAT_NS_URI)));
         return e.getDescendants(attachmentsFilter);
     }
 
     /**
+     * Returns list of attachment names.
      *
-     * @param e
-     * @return
+     * @param e Element.
+     *
+     * @return List of attachment names.
      */
-    private List<String> getAttachments(Element e) {
+    private List<String> getAttachmentNames(Element e) {
         List<String> attachments = new ArrayList<>();
         IteratorIterable<Element> attachmentsIterator = getAttachmentsIterator(e);
 
@@ -150,29 +175,35 @@ public class DefaultPageSplitter implements PageSplitter {
     }
 
     /**
+     * Determines if an element is a given macro.
      *
-     * @param e
-     * @param macroName
-     * @return
+     * @param e         Element.
+     * @param macroName Macro name.
+     *
+     * @return Boolean value.
      */
     private boolean isMacro(Element e, String macroName) {
         Attribute name = e.getAttribute("name", Namespace.getNamespace(STORAGE_FORMAT_NS_PREFIX, STORAGE_FORMAT_NS_URI));
-        return name != null && e.getName().equals(macroName);
+        return name != null && name.getValue().equals(macroName);
     }
 
     /**
+     * Returns a regex matcher.
      *
-     * @param e
-     * @return
+     * @param e Element.
+     *
+     * @return Matcher.
      */
     private Matcher getMatcher(Element e) {
         return headingRegex.matcher(e.getName());
     }
 
     /**
-     * @param e
+     * Determines if an element is a heading.
      *
-     * @return
+     * @param e Element.
+     *
+     * @return Booelan value.
      */
     private boolean isHeading(Element e) {
         return getMatcher(e).find();

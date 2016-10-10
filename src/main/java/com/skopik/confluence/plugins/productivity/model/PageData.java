@@ -12,7 +12,7 @@ public class PageData {
     private int level;
     private int position;
     private PageData parent;
-    private List<String> attachmentNames;
+    private List<String> attachmentNames = new ArrayList<>();
     private List<PageData> children = new ArrayList<>();
 
     public String getBody() {
@@ -27,8 +27,12 @@ public class PageData {
         return attachmentNames;
     }
 
-    public void setAttachmentNames(List<String> attachmentNames) {
-        this.attachmentNames = attachmentNames;
+    public void addAttachmentName(String name) {
+        attachmentNames.add(name);
+    }
+
+    public void addAttachmentNames(List<String> names) {
+        attachmentNames.addAll(names);
     }
 
     public String getTitle() {
@@ -86,4 +90,6 @@ public class PageData {
     public void setParent(PageData parent) {
         this.parent = parent;
     }
+
+
 }
