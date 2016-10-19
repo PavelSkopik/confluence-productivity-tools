@@ -23,15 +23,12 @@ public class PageOperationsFactory {
     private TransactionTemplate transactionTemplate;
 
     public Operation get(Settings settings) throws UnsupportedPageOperationException {
-
         if (settings.getOperationType().equals(PageOperationType.MERGE_DESCENDANTS)) {
             return new MergePagesOperation(pageManager, attachmentManager, transactionTemplate, settings);
         } else if (settings.getOperationType().equals(PageOperationType.SPLIT)) {
-            throw new NotImplementedException();
-        } else if (settings.getOperationType().equals(PageOperationType.DELETE_SELF_DESCENDANTS)) {
-            throw new NotImplementedException();
-        } else if (settings.getOperationType().equals(PageOperationType.DELETE_DESCENDANTS)) {
-            throw new NotImplementedException();
+            return new SplitPageOperation(pageManager, transactionTemplate, settings);
+        } else if (settings.getOperationType().equals(PageOperationType.DELETE_SELF_DESCENDANTS) || settings.getOperationType().equals(PageOperationType.DELETE_DESCENDANTS)) {
+            return new DeletePagesOperation(pageManager, transactionTemplate, settings);
         } else {
             throw new UnsupportedPageOperationException("Operation " + settings.getOperationType().toString() + " is not supported.");
         }

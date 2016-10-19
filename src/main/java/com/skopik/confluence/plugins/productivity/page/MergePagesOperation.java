@@ -10,6 +10,7 @@ import com.atlassian.sal.api.transaction.TransactionTemplate;
 import com.skopik.confluence.plugins.productivity.api.Operation;
 import com.skopik.confluence.plugins.productivity.api.PageContentMerger;
 import com.skopik.confluence.plugins.productivity.api.Settings;
+import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.List;
 
-public class MergePagesOperation implements Operation<Boolean> {
+public class MergePagesOperation implements Operation<OperationResult> {
 
     private static final Logger logger = LoggerFactory.getLogger(MergePagesOperation.class);
 
@@ -40,26 +41,31 @@ public class MergePagesOperation implements Operation<Boolean> {
     }
 
     @Override
-    public Boolean run() {
-        return transactionTemplate.execute(new TransactionCallback<Boolean>() {
+    public OperationResult run() {
+        return transactionTemplate.execute(new TransactionCallback<OperationResult>() {
             @Override
-            public Boolean doInTransaction() {
+            public OperationResult doInTransaction() {
+                OperationResult operationResult = new OperationResult(settings.getOperationType());
                 Page parent = pageManager.getPage(settings.getPageId());
 
-                if (parent == null)
-                    return false;
+                if (parent == null) {
+                    operationResult.setSuccess(false);
+                    return operationResult;
+                }
 
                 List<Page> descendants = pageManager.getDescendants(parent);
                 mergePages(parent, descendants);
 
-                return true;
+                return operationResult;
             }
         });
     }
 
     /**
-     * @param parent
-     * @param descendants
+     * Merges descendant pages into a parent page.
+     *
+     * @param parent      Parent page.
+     * @param descendants List of descendant pages.
      */
     private void mergePages(final Page parent, List<Page> descendants) {
         pageManager.saveNewVersion(parent, new Modification<Page>() {
@@ -77,8 +83,10 @@ public class MergePagesOperation implements Operation<Boolean> {
     }
 
     /**
-     * @param sourcePage
-     * @param targetPage
+     * Copies attachments from one page to another.
+     *
+     * @param sourcePage Source  page.
+     * @param targetPage Target page.
      */
     private void copyAttachments(Page sourcePage, Page targetPage) {
         try {

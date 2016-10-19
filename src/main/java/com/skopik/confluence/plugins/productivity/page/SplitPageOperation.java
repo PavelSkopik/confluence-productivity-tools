@@ -8,12 +8,14 @@ import com.atlassian.sal.api.transaction.TransactionTemplate;
 import com.skopik.confluence.plugins.productivity.api.Operation;
 import com.skopik.confluence.plugins.productivity.api.PageSplitter;
 import com.skopik.confluence.plugins.productivity.api.Settings;
+import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import com.skopik.confluence.plugins.productivity.model.PageData;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
-public class SplitPageOperation implements Operation<Boolean> {
+public class SplitPageOperation implements Operation<OperationResult> {
 
     private PageManager pageManager;
     private TransactionTemplate transactionTemplate;
@@ -32,36 +34,44 @@ public class SplitPageOperation implements Operation<Boolean> {
     }
 
     @Override
-    public Boolean run() {
-        return transactionTemplate.execute(new TransactionCallback<Boolean>() {
+    public OperationResult run() {
+        return transactionTemplate.execute(new TransactionCallback<OperationResult>() {
             @Override
-            public Boolean doInTransaction() {
+            public OperationResult doInTransaction() {
                 Page page = pageManager.getPage(settings.getPageId());
+                List<PageData> newPages = new ArrayList<>();
 
                 if (page != null) {
-                    List<PageData> newPages = pageSplitter.split(page);
+                    newPages = pageSplitter.split(page);
 
-                    for(PageData pageData : newPages){
+                    for (PageData pageData : newPages) {
                         createPage(pageData, page.getParent(), page.getSpace());
                     }
                 }
 
-                return true;
+                return new OperationResult(settings.getOperationType(), newPages);
             }
         });
     }
 
-    private void createPage(PageData pageData, Page parentPage, Space space){
+    /**
+     * @param pageData
+     * @param parentPage
+     * @param space
+     */
+    private void createPage(PageData pageData, Page parentPage, Space space) {
         Page newPage = new Page();
         newPage.setTitle(pageData.getTitle());
         newPage.setParentPage(parentPage);
         newPage.setBodyAsString(pageData.getBody());
+        newPage.setSpace(space);
         parentPage.addChild(newPage);
 
         pageManager.saveContentEntity(newPage, null);
+        pageData.setNewPageId(newPage.getId());
 
-        if(pageData.getChildren().size() > 0){
-            for(PageData p : pageData.getChildren()){
+        if (pageData.getChildren().size() > 0) {
+            for (PageData p : pageData.getChildren()) {
                 createPage(p, newPage.getParent(), space);
             }
         }

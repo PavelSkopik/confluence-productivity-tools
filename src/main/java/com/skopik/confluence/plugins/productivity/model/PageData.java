@@ -6,6 +6,8 @@ import java.util.List;
 public class PageData {
 
     private String id;
+    private Long originalPageId;
+    private Long newPageId;
     private String parentId;
     private String title;
     private String body = "";
@@ -91,5 +93,19 @@ public class PageData {
         this.parent = parent;
     }
 
+    public Long getOriginalPageId() {
+        return originalPageId;
+    }
 
+    public void setOriginalPageId(Long originalPageId) {
+        this.originalPageId = originalPageId;
+    }
+
+    public Long getNewPageId() {
+        return newPageId;
+    }
+
+    public void setNewPageId(Long newPageId) {
+        this.newPageId = newPageId;
+    }
 }
