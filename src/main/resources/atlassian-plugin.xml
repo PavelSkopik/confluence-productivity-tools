@@ -20,5 +20,9 @@
 
         <context>productivity-tools</context>
     </web-resource>
+
+    <component-import key="transactionTemplate" interface="com.atlassian.sal.api.transaction.TransactionTemplate"/>
+
+    <rest key="productivity-tools-rest-service" name="Productivity Tools REST Service" path="productivity-tools" version="1.0"/>
     
 </atlassian-plugin>

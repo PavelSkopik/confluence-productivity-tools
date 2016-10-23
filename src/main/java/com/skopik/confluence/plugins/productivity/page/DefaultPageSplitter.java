@@ -134,7 +134,7 @@ public class DefaultPageSplitter implements PageSplitter {
      * @return Heading level.
      */
     private int getHeadingLevel(Element e) {
-        Matcher m = getMatcher(e);
+        Matcher m = getHeadingMatcher(e);
         return m.find() ? Integer.valueOf(m.group(1)) : -1;
     }
 
@@ -194,7 +194,7 @@ public class DefaultPageSplitter implements PageSplitter {
      *
      * @return Matcher.
      */
-    private Matcher getMatcher(Element e) {
+    private Matcher getHeadingMatcher(Element e) {
         return headingRegex.matcher(e.getName());
     }
 
@@ -206,7 +206,7 @@ public class DefaultPageSplitter implements PageSplitter {
      * @return Booelan value.
      */
     private boolean isHeading(Element e) {
-        return getMatcher(e).find();
+        return getHeadingMatcher(e).find();
     }
 
 

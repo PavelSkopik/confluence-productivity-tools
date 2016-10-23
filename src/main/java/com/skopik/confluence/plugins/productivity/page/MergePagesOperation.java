@@ -7,7 +7,7 @@ import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
-import com.skopik.confluence.plugins.productivity.api.Operation;
+import com.skopik.confluence.plugins.productivity.api.PageOperation;
 import com.skopik.confluence.plugins.productivity.api.PageContentMerger;
 import com.skopik.confluence.plugins.productivity.api.Settings;
 import com.skopik.confluence.plugins.productivity.model.OperationResult;
@@ -18,7 +18,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.List;
 
-public class MergePagesOperation implements Operation<OperationResult> {
+public class MergePagesOperation implements PageOperation<OperationResult> {
 
     private static final Logger logger = LoggerFactory.getLogger(MergePagesOperation.class);
 

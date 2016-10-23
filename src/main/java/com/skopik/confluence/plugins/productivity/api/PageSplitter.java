@@ -6,8 +6,8 @@ import com.skopik.confluence.plugins.productivity.model.PageData;
 import java.util.List;
 
 /**
- * Splits a Confluence page into multiple pages based on headings in the content. Heading levels determine nesting  of
- * the resulting  pages.
+ * Splits a Confluence page into multiple pages based on headings in the content. Heading levels determine nesting of
+ * the resulting pages.
  */
 public interface PageSplitter {
 

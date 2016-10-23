@@ -5,7 +5,7 @@ import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.confluence.spaces.Space;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
-import com.skopik.confluence.plugins.productivity.api.Operation;
+import com.skopik.confluence.plugins.productivity.api.PageOperation;
 import com.skopik.confluence.plugins.productivity.api.PageSplitter;
 import com.skopik.confluence.plugins.productivity.api.Settings;
 import com.skopik.confluence.plugins.productivity.model.OperationResult;
@@ -15,7 +15,10 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SplitPageOperation implements Operation<OperationResult> {
+/**
+ * Splits a single page into multiple pages based on heading levels.
+ */
+public class SplitPageOperation implements PageOperation<OperationResult> {
 
     private PageManager pageManager;
     private TransactionTemplate transactionTemplate;
@@ -55,9 +58,11 @@ public class SplitPageOperation implements Operation<OperationResult> {
     }
 
     /**
-     * @param pageData
-     * @param parentPage
-     * @param space
+     * Creates a new page.
+     *
+     * @param pageData   Object to create a new page from.
+     * @param parentPage A page to set as a parent.
+     * @param space      Target space.
      */
     private void createPage(PageData pageData, Page parentPage, Space space) {
         Page newPage = new Page();

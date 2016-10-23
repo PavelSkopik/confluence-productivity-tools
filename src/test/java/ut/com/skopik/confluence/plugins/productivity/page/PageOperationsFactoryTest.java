@@ -38,16 +38,16 @@ public class PageOperationsFactoryTest {
     @Test
     public void  testGetOperation() throws UnsupportedPageOperationException {
         settings.setOperationType(PageOperationType.DELETE_DESCENDANTS);
-        assertTrue(operationsFactory.get(settings) instanceof DeletePagesOperation);
+        assertTrue(operationsFactory.create(settings) instanceof DeletePagesOperation);
 
         settings.setOperationType(PageOperationType.DELETE_SELF_DESCENDANTS);
-        assertTrue(operationsFactory.get(settings) instanceof DeletePagesOperation);
+        assertTrue(operationsFactory.create(settings) instanceof DeletePagesOperation);
 
         settings.setOperationType(PageOperationType.SPLIT);
-        assertTrue(operationsFactory.get(settings) instanceof SplitPageOperation);
+        assertTrue(operationsFactory.create(settings) instanceof SplitPageOperation);
 
         settings.setOperationType(PageOperationType.MERGE_DESCENDANTS);
-        assertTrue(operationsFactory.get(settings) instanceof MergePagesOperation);
+        assertTrue(operationsFactory.create(settings) instanceof MergePagesOperation);
     }
 
 }
