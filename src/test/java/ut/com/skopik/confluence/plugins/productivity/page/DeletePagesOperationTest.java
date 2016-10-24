@@ -4,7 +4,7 @@ import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
 import com.atlassian.sal.core.transaction.NoOpTransactionTemplate;
-import com.skopik.confluence.plugins.productivity.api.Settings;
+import com.skopik.confluence.plugins.productivity.api.OperationSettings;
 import com.skopik.confluence.plugins.productivity.page.DeletePagesOperation;
 import com.skopik.confluence.plugins.productivity.page.PageOperationType;
 import org.junit.Before;
@@ -17,7 +17,6 @@ import ut.com.skopik.confluence.plugins.productivity.TestUtils;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.times;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,13 +28,13 @@ public class DeletePagesOperationTest {
     private PageManager pageManager;
 
     private TransactionTemplate transactionTemplate;
-    private Settings settings;
+    private OperationSettings settings;
     private Page parent;
     private List<Page> descendants;
 
     @Before
     public void setup() {
-        settings = new Settings();
+        settings = new OperationSettings();
         settings.setPageId(0L);
 
         parent = new Page();

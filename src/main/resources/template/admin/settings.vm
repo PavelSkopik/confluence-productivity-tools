@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>$i18n.getText("")</title>
+        <meta name="decorator" content="atl.admin"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta http-equiv="cache-control" content="no-cache"/>
+
+        $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
+        $webResourceManager.requireResource("com.skopik")
+    </head>
+
+    <body>
+
+    </body>
+</html>

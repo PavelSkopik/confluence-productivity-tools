@@ -5,9 +5,9 @@ import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.confluence.spaces.Space;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
+import com.skopik.confluence.plugins.productivity.api.OperationSettings;
 import com.skopik.confluence.plugins.productivity.api.PageOperation;
 import com.skopik.confluence.plugins.productivity.api.PageSplitter;
-import com.skopik.confluence.plugins.productivity.api.Settings;
 import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import com.skopik.confluence.plugins.productivity.model.PageData;
 
@@ -22,10 +22,10 @@ public class SplitPageOperation implements PageOperation<OperationResult> {
 
     private PageManager pageManager;
     private TransactionTemplate transactionTemplate;
-    private Settings settings;
+    private OperationSettings settings;
     private PageSplitter pageSplitter;
 
-    public SplitPageOperation(PageManager pageManager, TransactionTemplate transactionTemplate, Settings settings) {
+    public SplitPageOperation(PageManager pageManager, TransactionTemplate transactionTemplate, OperationSettings settings) {
         this.pageManager = pageManager;
         this.transactionTemplate = transactionTemplate;
         this.settings = settings;

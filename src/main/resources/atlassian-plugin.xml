@@ -21,6 +21,14 @@
         <context>productivity-tools</context>
     </web-resource>
 
+    <web-resource key="productivity-tools-admin-resources" name="Productivity Tools Admin Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+
+
+        <context>productivity-tools-settings</context>
+    </web-resource>
+
     <component-import key="transactionTemplate" interface="com.atlassian.sal.api.transaction.TransactionTemplate"/>
 
     <rest key="productivity-tools-rest-service" name="Productivity Tools REST Service" path="productivity-tools" version="1.0"/>

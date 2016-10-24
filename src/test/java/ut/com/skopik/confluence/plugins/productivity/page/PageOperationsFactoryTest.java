@@ -2,7 +2,7 @@ package ut.com.skopik.confluence.plugins.productivity.page;
 
 import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
-import com.skopik.confluence.plugins.productivity.api.Settings;
+import com.skopik.confluence.plugins.productivity.api.OperationSettings;
 import com.skopik.confluence.plugins.productivity.exception.UnsupportedPageOperationException;
 import com.skopik.confluence.plugins.productivity.page.*;
 import org.junit.Before;
@@ -27,11 +27,11 @@ public class PageOperationsFactoryTest {
     @InjectMocks
     private PageOperationsFactory operationsFactory;
 
-    private Settings settings;
+    private OperationSettings settings;
 
     @Before
     public void setup(){
-        settings= new Settings();
+        settings= new OperationSettings();
         MockitoAnnotations.initMocks(PageOperationsFactoryTest.class);
     }
 

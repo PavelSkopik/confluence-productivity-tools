@@ -3,7 +3,7 @@ package com.skopik.confluence.plugins.productivity.api;
 import com.skopik.confluence.plugins.productivity.page.PageOperationType;
 import com.skopik.confluence.plugins.productivity.rest.dto.SettingsJaxb;
 
-public class Settings {
+public class OperationSettings {
 
     private long pageId;
     private PageOperationType operationType;
@@ -33,10 +33,10 @@ public class Settings {
         this.deleteJoinedPages = deleteJoinedPages;
     }
 
-    public Settings() {
+    public OperationSettings() {
     }
 
-    public Settings(SettingsJaxb settingsJaxb) {
+    public OperationSettings(SettingsJaxb settingsJaxb) {
         this.pageId = settingsJaxb.getPageId();
         this.operationType = settingsJaxb.getOperationType();
         this.deleteJoinedPages = settingsJaxb.isDeleteJoinedPages();

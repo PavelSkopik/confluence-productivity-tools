@@ -7,9 +7,9 @@ import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
-import com.skopik.confluence.plugins.productivity.api.PageOperation;
+import com.skopik.confluence.plugins.productivity.api.OperationSettings;
 import com.skopik.confluence.plugins.productivity.api.PageContentMerger;
-import com.skopik.confluence.plugins.productivity.api.Settings;
+import com.skopik.confluence.plugins.productivity.api.PageOperation;
 import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +26,9 @@ public class MergePagesOperation implements PageOperation<OperationResult> {
     private PageManager pageManager;
     private TransactionTemplate transactionTemplate;
     private PageContentMerger contentMerger;
-    private Settings settings;
+    private OperationSettings settings;
 
-    public MergePagesOperation(PageManager pageManager, AttachmentManager attachmentManager, TransactionTemplate transactionTemplate, Settings settings) {
+    public MergePagesOperation(PageManager pageManager, AttachmentManager attachmentManager, TransactionTemplate transactionTemplate, OperationSettings settings) {
         this.pageManager = pageManager;
         this.attachmentManager = attachmentManager;
         this.transactionTemplate = transactionTemplate;

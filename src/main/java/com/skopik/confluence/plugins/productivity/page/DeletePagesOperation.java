@@ -4,8 +4,8 @@ import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
+import com.skopik.confluence.plugins.productivity.api.OperationSettings;
 import com.skopik.confluence.plugins.productivity.api.PageOperation;
-import com.skopik.confluence.plugins.productivity.api.Settings;
 import com.skopik.confluence.plugins.productivity.model.OperationResult;
 
 import java.util.List;
@@ -16,10 +16,10 @@ import java.util.List;
 public class DeletePagesOperation implements PageOperation<OperationResult> {
 
     private PageManager pageManager;
-    private Settings settings;
+    private OperationSettings settings;
     private TransactionTemplate transactionTemplate;
 
-    public DeletePagesOperation(PageManager pageManager, TransactionTemplate transactionTemplate, Settings settings) {
+    public DeletePagesOperation(PageManager pageManager, TransactionTemplate transactionTemplate, OperationSettings settings) {
         this.pageManager = pageManager;
         this.transactionTemplate = transactionTemplate;
         this.settings = settings;
