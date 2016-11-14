@@ -2,35 +2,49 @@
     <plugin-info>
         <description>${project.description}</description>
         <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
         <param name="plugin-icon">images/pluginIcon.png</param>
         <param name="plugin-logo">images/pluginLogo.png</param>
     </plugin-info>
 
-    <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="productivity-tools"/>
-    
-    <!-- add our web resources -->
-    <web-resource key="productivity-tools-resources" name="productivity-tools Web Resources">
+
+    <component-import key="transactionTemplate" interface="com.atlassian.sal.api.transaction.TransactionTemplate"/>
+
+    <component-import key="velocity-renderer" interface="com.atlassian.templaterenderer.TemplateRenderer"/>
+
+    <component-import key="userManager" interface="com.atlassian.sal.api.user.UserManager"/>
+
+    <component-import key="loginUriProvider" interface="com.atlassian.sal.api.auth.LoginUriProvider"/>
+
+    <web-resource key="productivity-tools-admin-resources" name="Admin Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
-        <resource type="download" name="productivity-tools.css" location="/css/productivity-tools.css"/>
-        <resource type="download" name="productivity-tools.js" location="/js/productivity-tools.js"/>
+
+        <resource type="download" name="plugin-settings-manager.js" location="js/admin/plugin-settings-manager.js"/>
+        <resource type="download" name="plugin-settings.js" location="js/admin/plugin-settings.js"/>
         <resource type="download" name="images/" location="/images"/>
 
         <context>productivity-tools</context>
     </web-resource>
 
-    <web-resource key="productivity-tools-admin-resources" name="Productivity Tools Admin Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <web-section key="productivity-tools-admin-section" name="Productivity Tools" location="system.admin" weight="120"
+                 application="confluence">
+        <label key="productivitytools.admin.section.label"/>
+    </web-section>
 
+    <web-item key="productivity-tools-settings-web-item" name="Settings Web Item"
+              section="system.admin/productivity-tools-admin-section" weigth="7">
+        <label key="productivitytools.admin.webitem.settings.label"/>
+        <link linkId="productivity-tools-settings-web-item-link">/plugins/servlet/productivity-tools/admin/settings
+        </link>
+    </web-item>
 
+    <rest key="productivity-tools-rest-service" name="Productivity Tools REST Service" path="productivity-tools"
+          version="1.0"/>
 
-        <context>productivity-tools-settings</context>
-    </web-resource>
+    <servlet key="productivity-tools-settings-servlet" name="Plugin Settings Servlet"
+             class="com.skopik.confluence.plugins.productivity.servlet.PluginSettingsServlet">
+        <url-pattern>/productivity-tools/admin/settings</url-pattern>
+    </servlet>
 
-    <component-import key="transactionTemplate" interface="com.atlassian.sal.api.transaction.TransactionTemplate"/>
-
-    <rest key="productivity-tools-rest-service" name="Productivity Tools REST Service" path="productivity-tools" version="1.0"/>
-    
 </atlassian-plugin>
