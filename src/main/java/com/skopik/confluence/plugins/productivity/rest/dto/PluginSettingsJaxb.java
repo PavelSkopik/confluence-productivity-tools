@@ -11,11 +11,14 @@ public class PluginSettingsJaxb {
     @XmlElement
     private int maximumPageMergeCount;
 
+    public PluginSettingsJaxb() {
+    }
+
     public PluginSettingsJaxb(PluginSettings pluginSettings) {
         this.maximumPageMergeCount = pluginSettings.getMaximumPageMergeCount();
     }
 
-    public PluginSettings getSettings(){
+    public PluginSettings getSettings() {
         PluginSettings settings = new PluginSettings();
         settings.setMaximumPageMergeCount(this.maximumPageMergeCount);
         return settings;

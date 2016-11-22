@@ -1,6 +1,6 @@
 <html>
     <head>
-##        <title>$i18n.getText("")</title>
+        <title>$i18n.getText("productivitytools.admin.settings.webitem.label")</title>
         <meta name="decorator" content="atl.admin"/>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta http-equiv="pragma" content="no-cache"/>
@@ -11,6 +11,36 @@
     </head>
 
     <body>
+        <div id="settings-section">
 
+            <form id="settings-form" method="post" class="aui long-label">
+                <div class="field-group">
+                    <label for="maximumPageMergeCount">$i18n.getText(
+                        "productivitytools.admin.settings.maximumpagemergecount.label")</label>
+                    <input type="text" class="text" name="maximumPageMergeCount" id="maximumPageMergeCount">
+
+                    <div class="description">
+                        $i18n.getText("productivitytools.admin.settings.maximumpagemergecount.description")
+                    </div>
+                </div>
+            </form>
+
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input type="submit" class="aui-button" name="btn-save" id="btn-save"
+                           value="$i18n.getText("productivitytools.button.save.label")">
+                    <span class="button-spinner" id="save-spinner"></span>
+                </div>
+            </div>
+
+            <div class="aui-message aui-message-error closeable hidden" id="save-operation-error">
+                <p class="title">
+                    <strong>$i18n.getText("productivitytools.admin.settings.save.error")</strong>
+                </p>
+
+                <p id="save-operation-error-text"></p>
+            </div>
+
+        </div>
     </body>
 </html>

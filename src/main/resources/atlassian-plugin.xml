@@ -19,6 +19,7 @@
 
     <web-resource key="productivity-tools-admin-resources" name="Admin Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:aui-experimental-progress-indicator</dependency>
 
         <resource type="download" name="plugin-settings-manager.js" location="js/admin/plugin-settings-manager.js"/>
         <resource type="download" name="plugin-settings.js" location="js/admin/plugin-settings.js"/>
