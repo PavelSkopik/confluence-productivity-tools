@@ -14,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -41,8 +40,7 @@ public class DefaultPageSplitter implements PageSplitter {
     private XMLOutputter xmlOutputter;
     private PageHierarchyBuilder hiearchyBuilder;
 
-    @PostConstruct
-    public void init() {
+    public DefaultPageSplitter() {
         this.xhtmlResolver = new XhtmlEntityResolver();
         this.entityDTD = xhtmlResolver.createDTD();
         this.xmlOutputter = new XMLOutputter();

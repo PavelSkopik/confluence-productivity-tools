@@ -28,14 +28,15 @@ public class PageOperationsFactory {
      * Creates a new page operation.
      *
      * @param settings Operation settings.
+     *
      * @return {@link PageOperation}
      * @throws UnsupportedPageOperationException
      */
     public PageOperation create(OperationSettings settings) throws UnsupportedPageOperationException {
         if (settings.getOperationType().equals(PageOperationType.MERGE_DESCENDANTS)) {
-            return new MergePagesOperation(pageManager, attachmentManager, transactionTemplate, settings);
+            return new MergePagesOperation(pageManager, attachmentManager, new DefaultPageContentMerger(), transactionTemplate, settings);
         } else if (settings.getOperationType().equals(PageOperationType.SPLIT)) {
-            return new SplitPageOperation(pageManager, transactionTemplate, settings);
+            return new SplitPageOperation(pageManager, new DefaultPageSplitter(), transactionTemplate, settings);
         } else if (settings.getOperationType().equals(PageOperationType.DELETE_SELF_DESCENDANTS) || settings.getOperationType().equals(PageOperationType.DELETE_DESCENDANTS)) {
             return new DeletePagesOperation(pageManager, transactionTemplate, settings);
         } else {

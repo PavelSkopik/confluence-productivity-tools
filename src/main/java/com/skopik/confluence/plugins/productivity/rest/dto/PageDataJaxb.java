@@ -18,7 +18,7 @@ public class PageDataJaxb {
     private String title;
 
     public PageDataJaxb(PageData pageData) {
-        this.originalPageId = pageData.getOriginalPageId();
+        //this.originalPageId = pageData.getOriginalPageId();
         this.newPageId = pageData.getNewPageId();
         this.title = pageData.getTitle();
     }

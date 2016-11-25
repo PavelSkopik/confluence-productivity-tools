@@ -11,7 +11,6 @@ import com.skopik.confluence.plugins.productivity.api.PageSplitter;
 import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import com.skopik.confluence.plugins.productivity.model.PageData;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,15 +24,11 @@ public class SplitPageOperation implements PageOperation<OperationResult> {
     private OperationSettings settings;
     private PageSplitter pageSplitter;
 
-    public SplitPageOperation(PageManager pageManager, TransactionTemplate transactionTemplate, OperationSettings settings) {
+    public SplitPageOperation(PageManager pageManager, PageSplitter pageSplitter, TransactionTemplate transactionTemplate, OperationSettings settings) {
         this.pageManager = pageManager;
+        this.pageSplitter = pageSplitter;
         this.transactionTemplate = transactionTemplate;
         this.settings = settings;
-    }
-
-    @PostConstruct
-    public void init() {
-        this.pageSplitter = new DefaultPageSplitter();
     }
 
     @Override
@@ -48,7 +43,7 @@ public class SplitPageOperation implements PageOperation<OperationResult> {
                     newPages = pageSplitter.split(page);
 
                     for (PageData pageData : newPages) {
-                        createPage(pageData, page.getParent(), page.getSpace());
+                        createPage(pageData, page, page.getSpace());
                     }
                 }
 
@@ -75,9 +70,12 @@ public class SplitPageOperation implements PageOperation<OperationResult> {
         pageManager.saveContentEntity(newPage, null);
         pageData.setNewPageId(newPage.getId());
 
+        // TODO: copy attachments
+        // TODO: check for duplicate titles
+
         if (pageData.getChildren().size() > 0) {
             for (PageData p : pageData.getChildren()) {
-                createPage(p, newPage.getParent(), space);
+                createPage(p, newPage, space);
             }
         }
     }

@@ -3,7 +3,6 @@ package com.skopik.confluence.plugins.productivity.rest;
 import com.skopik.confluence.plugins.productivity.api.OperationSettings;
 import com.skopik.confluence.plugins.productivity.api.PageOperation;
 import com.skopik.confluence.plugins.productivity.exception.UnsupportedPageOperationException;
-import com.skopik.confluence.plugins.productivity.model.AsynchronousTask;
 import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import com.skopik.confluence.plugins.productivity.page.PageOperationsFactory;
 import com.skopik.confluence.plugins.productivity.rest.dto.OperationResultJaxb;
@@ -19,7 +18,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/operations")
 @Produces(MediaType.APPLICATION_JSON)
-public class PageOperationsResource implements AsynchronousTask {
+public class PageOperationsResource {
 
     @Autowired
     PageOperationsFactory pageOperationsFactory;

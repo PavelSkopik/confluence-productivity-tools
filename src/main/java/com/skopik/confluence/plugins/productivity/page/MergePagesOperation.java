@@ -14,7 +14,6 @@ import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,16 +27,12 @@ public class MergePagesOperation implements PageOperation<OperationResult> {
     private PageContentMerger contentMerger;
     private OperationSettings settings;
 
-    public MergePagesOperation(PageManager pageManager, AttachmentManager attachmentManager, TransactionTemplate transactionTemplate, OperationSettings settings) {
+    public MergePagesOperation(PageManager pageManager, AttachmentManager attachmentManager, PageContentMerger contentMerger, TransactionTemplate transactionTemplate, OperationSettings settings) {
         this.pageManager = pageManager;
         this.attachmentManager = attachmentManager;
+        this.contentMerger = contentMerger;
         this.transactionTemplate = transactionTemplate;
         this.settings = settings;
-    }
-
-    @PostConstruct
-    public void init() {
-        this.contentMerger = new DefaultPageContentMerger();
     }
 
     @Override

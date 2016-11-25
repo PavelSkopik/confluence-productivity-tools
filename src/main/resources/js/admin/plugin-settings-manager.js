@@ -59,7 +59,6 @@ define('ProductivityTools/PluginSettingsManager',
                 spinner.spinStop();
 
                 console.log("Could not save export configuration. The following error occurred: " + textStatus + " - " + errorThrown);
-                spinner.spinStop();
 
                 errorPanel.removeClass("hidden");
                 errorPanel.find(ERROR_TEXT_SELECTOR).text("Could not save export configuration. The following error occurred: " + textStatus + " - " + errorThrown + ". View the Javascript console for details.");
