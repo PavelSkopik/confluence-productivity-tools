@@ -21,7 +21,6 @@ public class DefaultPageSplitterTest {
         this.page = new Page();
         this.page.setBodyAsString(STORAGE_FORMAT);
         this.pageSplitter = new DefaultPageSplitter();
-        this.pageSplitter.init();
     }
 
     @Test

@@ -17,6 +17,7 @@ import ut.com.skopik.confluence.plugins.productivity.TestUtils;
 
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.times;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -48,7 +49,7 @@ public class DeletePagesOperationTest {
     @Test
     public void deletePagesReturnsFalse() {
         Mockito.when(pageManager.getPage(0L)).thenReturn(null);
-        // TODO finish the test
+        assertFalse(operation.run().isSuccess());
     }
 
     @Test
