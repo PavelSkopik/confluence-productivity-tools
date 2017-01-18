@@ -1,7 +1,48 @@
-{namespace Confluence.Templates.Example}
+{namespace Confluence.Templates.ProductivityTools}
 /**
  * Renders a Hello message.
  */
-{template .helloWorld}
-<div>Hello !</div>
+{template .operationsDialog}
+<section role="dialog" id="page-operations-dialog" class="aui-layer aui-dialog2 aui-dialog2-medium" aria-hidden="true">
+    <header class="aui-dialog2-header">
+        <h2 class="aui-dialog2-header-main">Page Operations</h2>
+        <a class="aui-dialog2-header-close">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+        </a>
+    </header>
+    <div class="aui-dialog2-content">
+        <div class="aui-page-panel">
+            <div class="aui-page-panel-inner">
+                <div class="aui-page-panel-nav">
+                    <nav class="aui-navgroup aui-navgroup-vertical">
+                        <div class="aui-navgroup-inner">
+                            <ul class="aui-nav __skate">
+                                <li class="aui-nav-selected"><a href="http://example.com/">Selected Nav Item</a></li>
+                                <li><a href="http://example.com/">Nav item</a></li>
+                                <li><a href="http://example.com/">Nav item</a></li>
+                            </ul>
+                            <ul class="aui-nav __skate">
+                                <li><a href="http://example.com/">Nav item</a></li>
+                                <li><a href="http://example.com/">Nav item</a></li>
+                            </ul>
+                            <div class="aui-nav-heading"><strong>Heading</strong></div>
+                            <ul class="aui-nav __skate">
+                                <li><a href="http://example.com/">Nav item</a></li>
+                                <li><a href="http://example.com/">Nav item</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <section class="aui-page-panel-content">
+                    <!-- main area for content -->
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer class="aui-dialog2-footer">
+        <div class="aui-dialog2-footer-actions">
+            <button id="dialog-close-button" class="aui-button aui-button-link">Close</button>
+        </div>
+    </footer>
+</section>
 {/template}

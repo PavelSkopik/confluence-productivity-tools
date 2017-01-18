@@ -30,6 +30,7 @@
 
     <web-resource key="productivity-tools-page-resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:dialog2</dependency>
 
         <transformation extension="js">
             <transformer key="jsI18n"/>
@@ -40,7 +41,8 @@
         </transformation>
 
         <resource type="download" name="operations.soy.js" location="template/page/operations.soy"/>
-        <resource type="download" name="operations.js" location="js/page/operations.js"/>
+        <resource type="download" name="page-operations.js" location="js/page/page-operations.js"/>
+        <resource type="download" name="page-operations-manager.js" location="js/page/page-operations-manager.js"/>
 
         <context>page</context>
     </web-resource>
@@ -50,11 +52,17 @@
         <label key="productivitytools.admin.section.label"/>
     </web-section>
 
-    <web-item key="productivity-tools-settings-web-item" name="Settings Web Item"
+    <web-item key="productivity-tools-settings-web-item" name="Settings web item"
               section="system.admin/productivity-tools-admin-section" weigth="7">
         <label key="productivitytools.admin.webitem.settings.label"/>
         <link linkId="productivity-tools-settings-web-item-link">/plugins/servlet/productivity-tools/admin/settings
         </link>
+    </web-item>
+
+    <web-item key="page-operations-item" name="Page operations web item" section="system.content.action">
+        <link linkId="page-operations-item">#</link>
+        <label key="productivitytools.page.menu.tools.item.pageoperations.label"/>
+        <!--<condition class="com.atlassian.confluence.plugin.descriptor.web.conditions.CreateContentCondition"/>-->
     </web-item>
 
     <rest key="productivity-tools-rest-service" name="Productivity Tools REST Service" path="productivity-tools"
