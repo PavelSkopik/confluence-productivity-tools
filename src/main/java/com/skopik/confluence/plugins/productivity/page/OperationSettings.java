@@ -1,6 +1,5 @@
-package com.skopik.confluence.plugins.productivity.api;
+package com.skopik.confluence.plugins.productivity.page;
 
-import com.skopik.confluence.plugins.productivity.page.PageOperationType;
 import com.skopik.confluence.plugins.productivity.rest.dto.SettingsJaxb;
 
 public class OperationSettings {

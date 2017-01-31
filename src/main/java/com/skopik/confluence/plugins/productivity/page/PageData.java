@@ -1,4 +1,4 @@
-package com.skopik.confluence.plugins.productivity.model;
+package com.skopik.confluence.plugins.productivity.page;
 
 import java.util.ArrayList;
 import java.util.List;

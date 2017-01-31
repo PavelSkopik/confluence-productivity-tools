@@ -1,6 +1,6 @@
 package com.skopik.confluence.plugins.productivity.rest.dto;
 
-import com.skopik.confluence.plugins.productivity.api.PluginSettings;
+import com.skopik.confluence.plugins.productivity.dao.PluginSettings;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

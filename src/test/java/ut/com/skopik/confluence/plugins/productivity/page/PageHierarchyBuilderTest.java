@@ -1,7 +1,7 @@
 package ut.com.skopik.confluence.plugins.productivity.page;
 
-import com.skopik.confluence.plugins.productivity.model.PageData;
-import com.skopik.confluence.plugins.productivity.page.PageHierarchyBuilder;
+import com.skopik.confluence.plugins.productivity.page.DefaultPageHierarchyBuilder;
+import com.skopik.confluence.plugins.productivity.page.PageData;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,12 +12,12 @@ import static org.junit.Assert.assertEquals;
 
 public class PageHierarchyBuilderTest {
 
-    private PageHierarchyBuilder hiearchyBuilder;
+    private DefaultPageHierarchyBuilder hiearchyBuilder;
     private List<PageData> pages;
 
     @Before
     public void setup() {
-        hiearchyBuilder = new PageHierarchyBuilder();
+        hiearchyBuilder = new DefaultPageHierarchyBuilder();
         int[] levels = {2, 3, 3, 4, 5, 3, 2, 3, 3};
         pages = getPages(levels);
     }

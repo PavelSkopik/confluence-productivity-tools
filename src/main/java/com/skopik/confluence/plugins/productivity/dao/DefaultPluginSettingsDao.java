@@ -2,7 +2,6 @@ package com.skopik.confluence.plugins.productivity.dao;
 
 import com.atlassian.bandana.BandanaManager;
 import com.atlassian.confluence.setup.bandana.ConfluenceBandanaContext;
-import com.skopik.confluence.plugins.productivity.api.PluginSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

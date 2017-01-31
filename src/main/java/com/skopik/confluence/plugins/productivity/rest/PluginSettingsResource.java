@@ -1,6 +1,6 @@
 package com.skopik.confluence.plugins.productivity.rest;
 
-import com.skopik.confluence.plugins.productivity.api.PluginSettings;
+import com.skopik.confluence.plugins.productivity.dao.PluginSettings;
 import com.skopik.confluence.plugins.productivity.dao.PluginSettingsDao;
 import com.skopik.confluence.plugins.productivity.rest.dto.PluginSettingsJaxb;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.skopik.confluence.plugins.productivity.api;
+package com.skopik.confluence.plugins.productivity.page;
 
 /**
  * A generic interface for page operations.

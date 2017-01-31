@@ -1,9 +1,8 @@
 package com.skopik.confluence.plugins.productivity.rest.dto;
 
-import com.skopik.confluence.plugins.productivity.model.OperationResult;
-import com.skopik.confluence.plugins.productivity.model.PageData;
+import com.skopik.confluence.plugins.productivity.page.OperationResult;
+import com.skopik.confluence.plugins.productivity.page.PageData;
 import com.skopik.confluence.plugins.productivity.page.PageOperationType;
-
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;

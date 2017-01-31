@@ -1,6 +1,6 @@
 package com.skopik.confluence.plugins.productivity.rest.dto;
 
-import com.skopik.confluence.plugins.productivity.model.PageData;
+import com.skopik.confluence.plugins.productivity.page.PageData;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

@@ -7,16 +7,15 @@ import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
-import com.skopik.confluence.plugins.productivity.api.OperationSettings;
-import com.skopik.confluence.plugins.productivity.api.PageContentMerger;
-import com.skopik.confluence.plugins.productivity.api.PageOperation;
-import com.skopik.confluence.plugins.productivity.model.OperationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Implements merge operation on a given list of pages.
+ */
 public class MergePagesOperation implements PageOperation<OperationResult> {
 
     private static final Logger logger = LoggerFactory.getLogger(MergePagesOperation.class);

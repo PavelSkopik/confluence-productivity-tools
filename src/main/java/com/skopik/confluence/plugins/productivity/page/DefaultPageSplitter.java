@@ -2,8 +2,6 @@ package com.skopik.confluence.plugins.productivity.page;
 
 import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.xml.XhtmlEntityResolver;
-import com.skopik.confluence.plugins.productivity.api.PageSplitter;
-import com.skopik.confluence.plugins.productivity.model.PageData;
 import org.jdom2.*;
 import org.jdom2.filter.Filter;
 import org.jdom2.filter.Filters;
@@ -38,14 +36,14 @@ public class DefaultPageSplitter implements PageSplitter {
     private XhtmlEntityResolver xhtmlResolver;
     private String entityDTD;
     private XMLOutputter xmlOutputter;
-    private PageHierarchyBuilder hiearchyBuilder;
+    private DefaultPageHierarchyBuilder hiearchyBuilder;
 
     public DefaultPageSplitter() {
         this.xhtmlResolver = new XhtmlEntityResolver();
         this.entityDTD = xhtmlResolver.createDTD();
         this.xmlOutputter = new XMLOutputter();
         this.headingRegex = Pattern.compile(HEADING_REGEX_PATTERN);
-        this.hiearchyBuilder = new PageHierarchyBuilder();
+        this.hiearchyBuilder = new DefaultPageHierarchyBuilder();
     }
 
     @Override
@@ -125,7 +123,7 @@ public class DefaultPageSplitter implements PageSplitter {
     }
 
     /**
-     * Retrieves a heading level..
+     * Retrieves a heading level.
      *
      * @param e Element.
      *
@@ -201,7 +199,7 @@ public class DefaultPageSplitter implements PageSplitter {
      *
      * @param e Element.
      *
-     * @return Booelan value.
+     * @return Boolean value.
      */
     private boolean isHeading(Element e) {
         return getHeadingMatcher(e).find();

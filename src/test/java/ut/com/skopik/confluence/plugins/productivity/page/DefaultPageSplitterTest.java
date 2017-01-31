@@ -1,8 +1,8 @@
 package ut.com.skopik.confluence.plugins.productivity.page;
 
 import com.atlassian.confluence.pages.Page;
-import com.skopik.confluence.plugins.productivity.model.PageData;
 import com.skopik.confluence.plugins.productivity.page.DefaultPageSplitter;
+import com.skopik.confluence.plugins.productivity.page.PageData;
 import org.junit.Before;
 import org.junit.Test;
 

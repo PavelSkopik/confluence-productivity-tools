@@ -1,9 +1,9 @@
 package com.skopik.confluence.plugins.productivity.rest;
 
-import com.skopik.confluence.plugins.productivity.api.OperationSettings;
-import com.skopik.confluence.plugins.productivity.api.PageOperation;
 import com.skopik.confluence.plugins.productivity.exception.UnsupportedPageOperationException;
-import com.skopik.confluence.plugins.productivity.model.OperationResult;
+import com.skopik.confluence.plugins.productivity.page.OperationResult;
+import com.skopik.confluence.plugins.productivity.page.OperationSettings;
+import com.skopik.confluence.plugins.productivity.page.PageOperation;
 import com.skopik.confluence.plugins.productivity.page.PageOperationsFactory;
 import com.skopik.confluence.plugins.productivity.rest.dto.OperationResultJaxb;
 import com.skopik.confluence.plugins.productivity.rest.dto.SettingsJaxb;

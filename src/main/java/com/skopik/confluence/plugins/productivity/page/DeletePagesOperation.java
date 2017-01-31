@@ -4,14 +4,11 @@ import com.atlassian.confluence.pages.Page;
 import com.atlassian.confluence.pages.PageManager;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
-import com.skopik.confluence.plugins.productivity.api.OperationSettings;
-import com.skopik.confluence.plugins.productivity.api.PageOperation;
-import com.skopik.confluence.plugins.productivity.model.OperationResult;
 
 import java.util.List;
 
 /**
- * Implements page deletion.
+ * Implements page deletion operation.
  */
 public class DeletePagesOperation implements PageOperation<OperationResult> {
 

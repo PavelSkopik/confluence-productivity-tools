@@ -1,7 +1,6 @@
 package com.skopik.confluence.plugins.productivity.page;
 
 import com.atlassian.confluence.pages.Page;
-import com.skopik.confluence.plugins.productivity.api.PageContentMerger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -28,10 +27,14 @@ public class DefaultPageContentMerger implements PageContentMerger {
     }
 
     /**
+     * Returns headings markup for a given page being merged. The method computes the correct heading level based on
+     * the
+     * page position in the tree.
      *
-     * @param page
-     * @param startPage
-     * @return
+     * @param page      Page being merged.
+     * @param startPage Page into which descendants are merged into.
+     *
+     * @return Headings markup as XML string.
      */
     private String getHeadingMarkup(Page page, Page startPage) {
         int level = (page.getAncestors().size() - startPage.getAncestors().size()) + 1;

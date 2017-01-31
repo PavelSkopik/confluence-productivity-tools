@@ -1,10 +1,9 @@
-package com.skopik.confluence.plugins.productivity.model;
-
-import com.skopik.confluence.plugins.productivity.page.PageOperationType;
+package com.skopik.confluence.plugins.productivity.page;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: refactor for concrete operations
 public class OperationResult {
 
     boolean success = true;
